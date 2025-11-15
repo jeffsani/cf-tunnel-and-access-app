@@ -1,4 +1,4 @@
-<img href="https://imagedelivery.net/EdT7o-fMhJAc7fBSjFjrJQ/aa4e77f8-4845-4551-771e-91ac54342e00/square">
+![Cloudflare logo](https://imagedelivery.net/EdT7o-fMhJAc7fBSjFjrJQ/aa4e77f8-4845-4551-771e-91ac54342e00/square "Cloudflare")
 
 <H1>Terraform Scripts to Automate Access to a Private Application Deployment via Cloudflare Zero Trust</H1>
 <H2>Description</H2>

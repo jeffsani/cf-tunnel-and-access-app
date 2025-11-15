@@ -34,3 +34,8 @@ variable "auth_email_domain" {
   description = "The email domain to allow for Access authentication (e.g., 'yourcompany.com')."
   type        = string
 }
+
+variable "private_network_cidr" {
+  description = "The private network CIDR to route through the tunnel (e.g., '192.168.0.0/24')."
+  type        = string
+}

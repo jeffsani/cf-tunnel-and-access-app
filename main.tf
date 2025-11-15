@@ -1,14 +1,10 @@
 # 1. Create the Cloudflare Tunnel
-# This resource replaces the deprecated 'cloudflare_zero_trust_tunnel_cloudflared'
 resource "cloudflare_tunnel" "app_tunnel" {
   account_id = var.cloudflare_account_id
   name       = var.tunnel_name
-  # The secret is a 32-byte string. Terraform generates one if not provided.
 }
 
 # 2. Configure the Cloudflare Tunnel
-# This resource replaces 'cloudflare_zero_trust_tunnel_cloudflared_config'
-# Note the structure is 'config { ingress_rule { ... } }'
 resource "cloudflare_tunnel_config" "app_config" {
   account_id = var.cloudflare_account_id
   tunnel_id  = cloudflare_tunnel.app_tunnel.id
@@ -17,7 +13,6 @@ resource "cloudflare_tunnel_config" "app_config" {
     ingress_rule {
       hostname = var.app_hostname
       service  = var.private_origin_url
-
       dynamic "origin_request" {
         for_each = var.origin_no_tls_verify ? [1] : []
         content {
@@ -33,9 +28,15 @@ resource "cloudflare_tunnel_config" "app_config" {
   }
 }
 
-# 3. Create the Access Application
-# This replaces 'cloudflare_zero_trust_access_application'
-# Note there is NO 'policy' block inside this resource.
+# 3. Create a Private Network Route
+resource "cloudflare_zero_trust_tunnel_cloudflared_route" "private_network_route" {
+  account_id = var.cloudflare_account_id
+  tunnel_id  = cloudflare_tunnel.app_tunnel.id
+  network    = var.private_network_cidr
+  comment    = "Route for private internal network"
+}
+
+# 4. Create the Access Application
 resource "cloudflare_access_application" "app_access" {
   account_id = var.cloudflare_account_id
   zone_id    = var.cloudflare_zone_id
@@ -47,9 +48,7 @@ resource "cloudflare_access_application" "app_access" {
   session_duration = "24h"
 }
 
-# 4. Create the Access Policy
-# This is the NEW way to define a policy.
-# It is a separate resource linked to the application.
+# 5. Create the Access Policy
 resource "cloudflare_access_policy" "app_policy" {
   account_id     = var.cloudflare_account_id
   application_id = cloudflare_access_application.app_access.id

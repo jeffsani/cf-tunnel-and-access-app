@@ -1,13 +1,13 @@
 
-<title>Terraform Scripts to Automate Access to a Private Application Deployment via Cloudflare Zero Trust</title>
-<strong>Description</strong>
+<H1>Terraform Scripts to Automate Access to a Private Application Deployment via Cloudflare Zero Trust</H1>
+<H2>Description</H2>
 This set of terraform files and linux script automates the setup of Cloudflare Zero Trust Access Application, Cloudflare Tunnel, and Tunnel Route.  The outputs include the public URL to access the application, the tunnel id and the token which you will pass to the linux script that will be used to install a Cloudflare Tunnel instance or replica.  An example shell script to use on the target host is also provided.
 
 
-<h1>Prerequisites:</h1>
+<H2>Prerequisites:</H2>
 - You must have an active Cloudflare Zone (domain).
 
-<h1>Install Terraform (or use Terraform Cloud).</h1>
+<H2>Install Terraform (or use Terraform Cloud).</H2>
 
  - Set your Cloudflare API Token as an environment variable:
 
@@ -17,7 +17,7 @@ This set of terraform files and linux script automates the setup of Cloudflare Z
  - export CLOUDFLARE_API_TOKEN="your_api_token_here"
 
 
-<h1>Configure Terraform:</h1>
+<H2>Configure Terraform:</H2>
 
  - Place all .tf files in a new directory.
 
@@ -27,7 +27,7 @@ This set of terraform files and linux script automates the setup of Cloudflare Z
 
  - add *.tfvars to your .gitignore (or equivalent) if using version control
 
-<h1>Apply Terraform:</h1>
+<H2>Apply Terraform:</H2>
 
  - Run terraform init to initialize the provider.
 
@@ -37,7 +37,7 @@ This set of terraform files and linux script automates the setup of Cloudflare Z
 
  - After it completes, Terraform will output the tunnel_token. Copy this token.
 
-<h1>Install Tunnel on Linux Host:</h1>
+<H2>Install Tunnel on Linux Host:</H2>
 
  - Copy the install_fips_tunnel.sh script to your Linux server (the one running your private web app).
 
@@ -48,7 +48,7 @@ This set of terraform files and linux script automates the setup of Cloudflare Z
  - Bash
    sudo ./install_fips_tunnel.sh <PASTE_YOUR_TUNNEL_TOKEN_HERE>
 
-<h1>Verify:</h1>
+<H2>Verify:</H2>
 
  - On your Linux host, check the service status: sudo systemctl status cloudflared.
 

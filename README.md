@@ -1,6 +1,6 @@
 ![Cloudflare logo](https://imagedelivery.net/EdT7o-fMhJAc7fBSjFjrJQ/aa4e77f8-4845-4551-771e-91ac54342e00/square "Cloudflare")
 
-<H1>Terraform Scripts to Automate Access to a Private Application Deployment via Cloudflare Zero Trust</H1>
+<H1>Terraform Scripts to Automate the Deployment Cloudflare Access for a Private App</H1>
 <H2>Description</H2>
 This set of terraform files and linux script automates the setup of Cloudflare Zero Trust Access Application, Cloudflare Tunnel, and Tunnel Route.  The outputs include the public URL to access the application, the tunnel id and the token which you will pass to the linux script that will be used to install a Cloudflare Tunnel instance or replica.  An example shell script to use on the target host is also provided.
 

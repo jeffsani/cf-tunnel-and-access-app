@@ -40,12 +40,12 @@ variable "private_network_cidr" {
   type        = string
 }
 
-variable "api_token" {
+variable "CLOUDFLARE_API_KEY" {
   description = "Your Cloudflare API Token with appropriate permissions."
   type        = string
 }
 
-variable "email" {
+variable "CLOUDFLARE_EMAIL" {
   description = "Your Cloudflare account email."
   type        = string
 }

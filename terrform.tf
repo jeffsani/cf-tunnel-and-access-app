@@ -15,5 +15,5 @@ terraform {
 
 provider "cloudflare" {
   api_token = var.CLOUDFLARE_API_KEY
-  email = var.CLOUDFLARE__EMAIL
+  email = var.CLOUDFLARE_EMAIL
 }

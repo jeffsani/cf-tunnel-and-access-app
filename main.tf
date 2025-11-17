@@ -24,7 +24,7 @@ data "cloudflare_zero_trust_tunnel_cloudflared_token" "app_tunnel_token" {
 resource "cloudflare_zero_trust_tunnel_cloudflared_config" "app_config" {
   account_id = var.cloudflare_account_id
   tunnel_id  = cloudflare_zero_trust_tunnel_cloudflared.app_tunnel.id
-
+  source = "local"
   config = {
     ingress = [{
       hostname = var.app_hostname
@@ -44,8 +44,11 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "app_config" {
         //tcp_keep_alive = 30
         //tls_timeout = 10
       }
-      //path = "subpath"
-    }]
+      //path = "subpath",
+      {
+      service = "http_status:404"
+      }
+    ]
   }
 }
 

@@ -60,19 +60,7 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_route" "private_network_route
   comment    = "Route for private internal network"
 }
 
-# 6. Create the Access Application
-resource "cloudflare_zero_trust_access_application" "app_access" {
-  account_id = var.cloudflare_account_id
-  zone_id    = var.cloudflare_zone_id
-  name       = "${var.app_hostname} Access"
-  domain     = var.app_hostname
-  type       = "self_hosted"
-
-  # Session duration (e.g., "24h", "1h")
-  session_duration = "24h"
-}
-
-# 7. Create the Access Policy
+# 6. Create the Access Policy
 resource "cloudflare_zero_trust_access_policy" "app_policy" {
   account_id     = var.cloudflare_account_id
   name       = "Allow Authenticated Users"
@@ -85,3 +73,20 @@ resource "cloudflare_zero_trust_access_policy" "app_policy" {
     }
   }]
 }
+
+# 7. Create the Access Application
+resource "cloudflare_zero_trust_access_application" "app_access" {
+  account_id = var.cloudflare_account_id
+  zone_id    = var.cloudflare_zone_id
+  name       = "${var.app_hostname} Access"
+  domain     = var.app_hostname
+  type       = "self_hosted"
+
+  # Session duration (e.g., "24h", "1h")
+  session_duration = "24h"
+  policies = [{
+    id = cloudflare_zero_trust_access_policy.app_policy.id
+    precedence = 0
+  }]
+}
+

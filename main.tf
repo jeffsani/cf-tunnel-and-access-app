@@ -26,27 +26,28 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "app_config" {
   tunnel_id  = cloudflare_zero_trust_tunnel_cloudflared.app_tunnel.id
   source = "local"
   config = {
-    ingress = [{
-      hostname = var.app_hostname
-      service  = var.private_origin_url
-      origin_request = {
-        no_tls_verify = true
-        //ca_pool = "caPool"
-        //connect_timeout = 10
-        //disable_chunked_encoding = true
-        //http2_origin = true
-        //http_host_header = "httpHostHeader"
-        //keep_alive_connections = 100
-        //keep_alive_timeout = 90
-        //no_happy_eyeballs = false
-        //origin_server_name = "originServerName"
-        //proxy_type = "proxyType"
-        //tcp_keep_alive = 30
-        //tls_timeout = 10
-      }
-      //path = "subpath",
+    ingress = [
       {
-      service = "http_status:404"
+        hostname = var.app_hostname
+        service  = var.private_origin_url
+        origin_request = {
+          no_tls_verify = true
+          //ca_pool = "caPool"
+          //connect_timeout = 10
+          //disable_chunked_encoding = true
+          //http2_origin = true
+          //http_host_header = "httpHostHeader"
+          //keep_alive_connections = 100
+          //keep_alive_timeout = 90
+          //no_happy_eyeballs = false
+          //origin_server_name = "originServerName"
+          //proxy_type = "proxyType"
+          //tcp_keep_alive = 30
+          //tls_timeout = 10
+        }
+      },
+      {
+        service = "http_status:404"
       }
     ]
   }

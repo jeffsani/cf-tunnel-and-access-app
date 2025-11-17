@@ -1,7 +1,3 @@
-provider "cloudflare" {
-  # Your Cloudflare API Token should be set as an
-  # environment variable: export CLOUDFLARE_API_TOKEN="your_token_here"
-}
 
 # 1. Create a random secret for the tunnel
 # We must use this to create the tunnel and the token

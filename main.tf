@@ -1,16 +1,3 @@
-terraform {
-  required_providers {
-    cloudflare = {
-      source = "cloudflare/cloudflare"
-      version = "~> 5.12.0"
-    }
-    random = {
-      source  = "hashicorp/random"
-      version = "~> 3.0"
-    }
-  }
-}
-
 provider "cloudflare" {
   # Your Cloudflare API Token should be set as an
   # environment variable: export CLOUDFLARE_API_TOKEN="your_token_here"

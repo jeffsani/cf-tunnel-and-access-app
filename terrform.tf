@@ -12,5 +12,9 @@ terraform {
       api_token = var.CLOUDFLARE_API_KEY
       email = var.CLOUDFLARE_EMAIL
     }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.0"
+    }
   }
 }

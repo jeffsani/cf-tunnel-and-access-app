@@ -15,7 +15,7 @@ resource "cloudflare_zero_trust_tunnel_cloudflared" "app_tunnel" {
 }
 
 # 3. Get the Token for the Tunnel
-resource "cloudflare_tunnel_token" "app_tunnel_token" {
+resource "cloudflare_zero_trust_tunnel_cloudflared_token" "app_tunnel_token" {
   account_id = var.cloudflare_account_id
   tunnel_id  = cloudflare_zero_trust_tunnel_cloudflared.app_tunnel.id
 }

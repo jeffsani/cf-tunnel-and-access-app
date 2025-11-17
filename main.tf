@@ -87,7 +87,7 @@ resource "cloudflare_zero_trust_access_application" "app_access" {
   session_duration = "24h"
   policies = [{
     id = cloudflare_zero_trust_access_policy.app_policy.id
-    precedence = 0
+    precedence = 1
   }]
 }
 

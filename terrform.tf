@@ -9,12 +9,15 @@ terraform {
     cloudflare = {
       source  = "cloudflare/cloudflare"
       version = "~> 5.12.0"
-      api_token = var.CLOUDFLARE_API_KEY
-      email = var.CLOUDFLARE_EMAIL
     }
     random = {
       source  = "hashicorp/random"
       version = "~> 3.0"
     }
   }
+}
+
+provider "cloudflare" {
+    api_token = var.CLOUDFLARE_API_KEY
+     email = var.CLOUDFLARE_EMAIL
 }

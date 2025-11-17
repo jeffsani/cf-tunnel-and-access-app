@@ -26,10 +26,9 @@ data "cloudflare_zero_trust_tunnel_cloudflared_config" "app_config" {
   tunnel_id  = cloudflare_zero_trust_tunnel_cloudflared.app_tunnel.id
 
   config = {
-    ingress = {
+    ingress = [{
       hostname = var.app_hostname
       service  = var.private_origin_url
-
       origin_request = {
         no_tls_verify = true
         //ca_pool = "caPool"
@@ -45,7 +44,7 @@ data "cloudflare_zero_trust_tunnel_cloudflared_config" "app_config" {
         //tcp_keep_alive = 30
         //tls_timeout = 10
       }
-    }
+    }]
   }
 }
 

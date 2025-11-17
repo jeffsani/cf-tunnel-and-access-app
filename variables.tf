@@ -39,3 +39,13 @@ variable "private_network_cidr" {
   description = "The private network CIDR to route through the tunnel (e.g., '192.168.0.0/24')."
   type        = string
 }
+
+variable "api_token" {
+  description = "Your Cloudflare API Token with appropriate permissions."
+  type        = string
+}
+
+variable "email" {
+  description = "Your Cloudflare account email."
+  type        = string
+}

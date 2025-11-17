@@ -21,7 +21,7 @@ data "cloudflare_zero_trust_tunnel_cloudflared_token" "app_tunnel_token" {
 }
 
 # 4. Configure the Cloudflare Tunnel
-resource "cloudflare_zero_trust_tunnel_cloudflared_config" "app_config" {
+data "cloudflare_zero_trust_tunnel_cloudflared_config" "app_config" {
   account_id = var.cloudflare_account_id
   tunnel_id  = cloudflare_zero_trust_tunnel_cloudflared.app_tunnel.id
 

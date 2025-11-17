@@ -7,6 +7,7 @@ output "tunnel_token" {
 output "tunnel_id" {
   description = "The ID of the created tunnel."
   value       = cloudflare_zero_trust_tunnel_cloudflared.app_tunnel
+  sensitive = true
 }
 
 output "application_url" {

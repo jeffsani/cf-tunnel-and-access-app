@@ -44,6 +44,7 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "app_config" {
         //tcp_keep_alive = 30
         //tls_timeout = 10
       }
+      //path = "subpath"
     }]
   }
 }
@@ -60,7 +61,7 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_route" "private_network_route
 resource "cloudflare_zero_trust_access_application" "app_access" {
   account_id = var.cloudflare_account_id
   zone_id    = var.cloudflare_zone_id
-  name       = "Access for ${var.app_hostname}"
+  name       = "${var.app_hostname} Access"
   domain     = var.app_hostname
   type       = "self_hosted"
 

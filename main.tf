@@ -73,10 +73,12 @@ resource "cloudflare_zero_trust_access_application" "app_access" {
 resource "cloudflare_zero_trust_access_policy" "app_policy" {
   account_id     = var.cloudflare_account_id
   name       = "Allow Authenticated Users"
-   decision   = "allow"
+  decision   = "allow"
 
   # This example allows any user from a specific email domain.
-  include = {
-    email_domain = [var.auth_email_domain]
-  }
+  include = [{
+    email_domain = {
+      domain = [var.auth_email_domain]
+    }
+  }]
 }

@@ -1,6 +1,6 @@
 output "tunnel_token" {
   description = "The token for the created tunnel. Pass this to your cloudflared service."
-  value       = cloudflare_zero_trust_tunnel_cloudflared.app_tunnel.token
+  value       = cloudflare_zero_trust_tunnel_cloudflared_token.app_tunnel_token.token
   sensitive   = true
 }
 

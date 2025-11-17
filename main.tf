@@ -78,7 +78,7 @@ resource "cloudflare_zero_trust_access_policy" "app_policy" {
   # This example allows any user from a specific email domain.
   include = [{
     email_domain = {
-      domain = [var.auth_email_domain]
+      domain = var.auth_email_domain
     }
   }]
 }

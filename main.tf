@@ -82,9 +82,17 @@ resource "cloudflare_zero_trust_access_application" "app_access" {
   name       = "${var.app_hostname} Access"
   domain     = var.app_hostname
   type       = "self_hosted"
-
+  app_launcher_visible = true
+  //allow_authenticate_via_warp = true
+  //allow_iframe = true
+  //allowed_idps = ["699d98642c564d2e855e9661899b7252"]
+  //auto_redirect_to_identity = true
   # Session duration (e.g., "24h", "1h")
   session_duration = "24h"
+  //custom_deny_message = "custom_deny_message"
+  //custom_deny_url = "custom_deny_url"
+  //custom_non_identity_deny_url = "custom_non_identity_deny_url"
+  //custom_pages = ["699d98642c564d2e855e9661899b7252"]
   policies = [{
     id = cloudflare_zero_trust_access_policy.app_policy.id
     precedence = 1

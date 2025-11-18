@@ -49,3 +49,13 @@ variable "CLOUDFLARE_EMAIL" {
   description = "Your Cloudflare account email."
   type        = string
 }
+
+variable "terraform_cloud_org" {
+  description = "Terraform Cloud Organization name."
+  type        = string
+}
+
+variable "terraform_cloud_workspace" {
+  description = "Terraform Cloud Workspace name."
+  type        = string
+}

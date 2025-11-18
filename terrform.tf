@@ -1,8 +1,8 @@
 terraform {
   cloud {
-    organization = "JPS_Consulting"
+    organization = var.terraform_cloud_org
     workspaces {
-      name = "Deploy-CF-Tunnel-Access-App"
+      name = var.terraform_cloud_workspace
     }
   }
   required_providers {

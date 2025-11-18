@@ -33,3 +33,14 @@ This set of terraform files and linux script automates the setup of Cloudflare Z
  - On your Linux host, check the service status: sudo systemctl status cloudflared.
  - In your Cloudflare Zero Trust dashboard, check that your tunnel is "Healthy".
  - Open a browser and navigate to your app_hostname (e.g., https://secure-app.yourdomain.com). You should be prompted with the Cloudflare Access login screen.
+
+<strong>Known Issues:</strong>
+When generating a plan, you might receive a warning similar to:
+
+Warning: Resource Destruction Considerations
+with cloudflare_zero_trust_tunnel_cloudflared_config.app_config
+on main.tf line 24, in resource "cloudflare_zero_trust_tunnel_cloudflared_config" "app_config":
+resource "cloudflare_zero_trust_tunnel_cloudflared_config" "app_config" {
+This resource cannot be destroyed from Terraform. If you create this resource, it will be present in the API until manually deleted
+
+This seems to be a false positive warning.  I was able to remove the created entities without issue by queuing a destroy plan.  The resource in question is related to a parent resource which is deleted sucessfully so it is destroyed by relation.

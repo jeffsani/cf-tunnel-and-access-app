@@ -1,8 +1,11 @@
 # rename this file to "terraform.tfvars" and fill in your values.
 # Do not commit terraform.tfvars to source control.
 
+# Cloudflare Credentials
 cloudflare_account_id = "your-account-id-here"
 cloudflare_zone_id    = "your-zone-id-here"
+
+# Configuration
 tunnel_name           = "prod-webapp-tunnel"
 app_hostname          = "secure-app.yourdomain.com"
 private_origin_url    = "https://192.168.0.100:8443" # IMPORTANT: Change this to match your private host and port

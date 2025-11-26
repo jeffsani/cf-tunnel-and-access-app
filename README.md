@@ -2,13 +2,12 @@
 
 <H1>Terraform Scripts to Automate the Deployment of Cloudflare Access for a Private Application</H1>
 <H2>Description</H2>
-This set of terraform files and linux script automates the setup of Cloudflare Zero Trust Access Application, Cloudflare Tunnel, and Tunnel Route.  The outputs include the public URL to access the application, the tunnel id and the token which you will pass to the linux script that will be used to install a Cloudflare Tunnel instance or replica.  An example shell script to use on the target host is also provided. 
+This set of terraform files and linux script automates the setup of Cloudflare Zero Trust Access Application, Cloudflare Tunnel, and Tunnel Route.  The outputs include the public URL to access the application, the tunnel id and the tokens which you will pass to the linux script that will be used to install a Cloudflare Tunnel instance or replica.  An example shell script to use on the target host is also provided. 
 
 <H2>Prerequisites:</H2>
  - You must have an active Cloudflare Zone (domain)
  - Install Terraform (or use Terraform Cloud)
  - Set your Cloudflare API Token/API Key/Email Address as an environment variables
-
 
 <H2>Configure Terraform:</H2>
  - Place all .tf files in a new directory.
@@ -27,7 +26,7 @@ This set of terraform files and linux script automates the setup of Cloudflare Z
  - Make the script executable: chmod +x install_fips_tunnel.sh.
  - Run the script with sudo, passing the token from the Terraform output:
  - Bash
-   sudo ./install_fips_tunnel.sh <PASTE_YOUR_TUNNEL_TOKEN_HERE>
+   sudo ./install_tunnel.sh <PASTE_YOUR_TUNNEL_TOKEN_HERE>
 
 <H2>Verify:</H2>
  - On your Linux host, check the service status: sudo systemctl status cloudflared.
